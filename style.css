@@ -1,0 +1,292 @@
+/* ============ GLOBAL STYLES ============ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: #0e0e0e;
+  color: #fff;
+  scroll-behavior: smooth;
+}
+
+/* ============ NAVBAR ============ */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 50px;
+  position: fixed;
+  width: 100%;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(10px);
+  z-index: 100;
+}
+
+.logo {
+  font-weight: 800;
+  font-size: 24px;
+  color: #00ffcc;
+}
+
+.logo span { color: #fff; }
+
+nav ul {
+  display: flex;
+  list-style: none;
+}
+
+nav ul li {
+  margin-left: 20px;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+nav ul li a:hover {
+  color: #00ffcc;
+}
+
+/* ============ SECTIONS ============ */
+section {
+  padding: 100px 50px;
+  min-height: 100vh;
+  position: relative;
+  z-index: 1;
+}
+
+/* ============ HERO SECTION ============ */
+.hero {
+  height: 100vh;
+  background: url('hero-bg.jpg') center center / cover no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #fff;
+  position: relative;
+  z-index: 2;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.7));
+  backdrop-filter: blur(2px);
+  z-index: 1;
+}
+
+.hero h2,
+.hero h3,
+.hero .cta {
+  position: relative;
+  z-index: 2;
+}
+
+.hero h2 span {
+  color: #00ffcc;
+}
+
+.cta {
+  margin-top: 20px;
+  padding: 10px 25px;
+  background: #00ffcc;
+  color: #111;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.cta:hover {
+  transform: scale(1.1);
+  background: #00ffaa;
+}
+
+/* Scroll indicator animation */
+.scroll-down {
+  margin-top: 50px;
+  width: 30px;
+  height: 50px;
+  border: 2px solid #00ffcc;
+  border-radius: 20px;
+  position: relative;
+}
+
+.scroll-down::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  background: #00ffcc;
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  animation: scroll 1.5s infinite;
+}
+
+@keyframes scroll {
+  0% { top: 10px; opacity: 1; }
+  100% { top: 30px; opacity: 0; }
+}
+
+/* ============ PARTICLES BACKGROUND ============ */
+#particles-js {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #111;
+  z-index: 0;
+  opacity: 0;
+  animation: fadeInParticles 2s ease forwards 1s;
+  pointer-events: none;
+}
+
+@keyframes fadeInParticles {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Ensure content appears above particles */
+section:not(.hero),
+footer,
+header {
+  position: relative;
+  z-index: 1;
+}
+
+/* ============ SKILLS SECTION ============ */
+.skill-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 50px;
+  margin-top: 40px;
+}
+
+.circle {
+  position: relative;
+  width: 160px;
+  height: 160px;
+}
+
+.circle svg {
+  width: 160px;
+  height: 160px;
+  transform: rotate(-90deg);
+  overflow: visible;
+}
+
+.circle svg circle {
+  fill: none;
+  stroke-width: 12;
+  stroke-linecap: round;
+  stroke: #222;
+}
+
+.circle svg circle:nth-child(2) {
+  stroke: #00ffcc;
+  stroke-dasharray: 377;
+  stroke-dashoffset: 377;
+  transition: stroke-dashoffset 1.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.number {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.number img {
+  width: 45px;
+  height: 45px;
+  margin-bottom: 8px;
+  filter: drop-shadow(0 0 4px rgba(0,255,204,0.8));
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+.number h3 {
+  font-size: 1.6rem;
+  margin: 0;
+}
+
+.number p {
+  margin: 0;
+  font-size: 1rem;
+  color: #aaa;
+}
+
+/* ============ PROJECTS SECTION ============ */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+}
+
+.project-card {
+  background: #1a1a1a;
+  padding: 30px;
+  border-radius: 15px;
+  transition: 0.3s;
+}
+
+.project-card:hover {
+  transform: scale(1.05);
+  background: #222;
+}
+
+/* ============ CONTACT SECTION ============ */
+.contact form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 60%;
+  margin: auto;
+}
+
+input, textarea {
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  outline: none;
+}
+
+button[type="submit"] {
+  padding: 10px;
+  background: #00ffcc;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  color: #111;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+button[type="submit"]:hover {
+  background: #00ffaa;
+}
+
+/* ============ FOOTER ============ */
+footer {
+  text-align: center;
+  padding: 20px;
+  background: #111;
+  color: #aaa;
+}
